@@ -3,7 +3,7 @@
 .DS_Store
 
 # Xcode user specific files
-*.xcodeproj/xcuserdata
+*.xcodeproj/xcuserdata/
 *.xcodeproj/project.xcworkspace
 
 # JetBrains AppCode stuff

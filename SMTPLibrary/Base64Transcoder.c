@@ -28,9 +28,11 @@
 
 #include "Base64Transcoder.h"
 
+#include <stdint.h>
+#include <string.h>
 #include <math.h>
 
-const UInt8 kBase64EncodeTable[64] = {
+const uint8_t kBase64EncodeTable[64] = {
 	/*  0 */ 'A',	/*  1 */ 'B',	/*  2 */ 'C',	/*  3 */ 'D', 
 	/*  4 */ 'E',	/*  5 */ 'F',	/*  6 */ 'G',	/*  7 */ 'H', 
 	/*  8 */ 'I',	/*  9 */ 'J',	/* 10 */ 'K',	/* 11 */ 'L', 
@@ -57,7 +59,7 @@ const UInt8 kBase64EncodeTable[64] = {
 -5 = Illegal noise (null byte)
 */
 
-const SInt8 kBase64DecodeTable[128] = {
+const int8_t kBase64DecodeTable[128] = {
 	/* 0x00 */ -5, 	/* 0x01 */ -3, 	/* 0x02 */ -3, 	/* 0x03 */ -3,
 	/* 0x04 */ -3, 	/* 0x05 */ -3, 	/* 0x06 */ -3, 	/* 0x07 */ -3,
 	/* 0x08 */ -3, 	/* 0x09 */ -2, 	/* 0x0a */ -2, 	/* 0x0b */ -2,
@@ -92,14 +94,14 @@ const SInt8 kBase64DecodeTable[128] = {
 	/* '|' */ -3,	/* '}' */ -3,	/* '~' */ -3,	/* 0x7f */ -3
 };
 
-const UInt8 kBits_00000011 = 0x03;
-const UInt8 kBits_00001111 = 0x0F;
-const UInt8 kBits_00110000 = 0x30;
-const UInt8 kBits_00111100 = 0x3C;
-const UInt8 kBits_00111111 = 0x3F;
-const UInt8 kBits_11000000 = 0xC0;
-const UInt8 kBits_11110000 = 0xF0;
-const UInt8 kBits_11111100 = 0xFC;
+const uint8_t kBits_00000011 = 0x03;
+const uint8_t kBits_00001111 = 0x0F;
+const uint8_t kBits_00110000 = 0x30;
+const uint8_t kBits_00111100 = 0x3C;
+const uint8_t kBits_00111111 = 0x3F;
+const uint8_t kBits_11000000 = 0xC0;
+const uint8_t kBits_11110000 = 0xF0;
+const uint8_t kBits_11111100 = 0xFC;
 
 size_t EstimateBas64EncodedDataSize(size_t inDataSize)
 {
@@ -115,14 +117,14 @@ size_t theDecodedDataSize = (int)ceil(inDataSize / 4.0) * 3;
 return(theDecodedDataSize);
 }
 
-bool Base64EncodeData(const void *inInputData, size_t inInputDataSize, char *outOutputData, size_t *ioOutputDataSize, BOOL wrapped)
+bool Base64EncodeData(const void *inInputData, size_t inInputDataSize, char *outOutputData, size_t *ioOutputDataSize, bool wrapped)
 {
 size_t theEncodedDataSize = EstimateBas64EncodedDataSize(inInputDataSize);
 if (*ioOutputDataSize < theEncodedDataSize)
 	return(false);
 *ioOutputDataSize = theEncodedDataSize;
-const UInt8 *theInPtr = (const UInt8 *)inInputData;
-UInt32 theInIndex = 0, theOutIndex = 0;
+const uint8_t *theInPtr = (const uint8_t *)inInputData;
+uint32_t theInIndex = 0, theOutIndex = 0;
 for (; theInIndex < (inInputDataSize / 3) * 3; theInIndex += 3)
 	{
 	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_11111100) >> 2];
@@ -171,16 +173,16 @@ size_t theDecodedDataSize = EstimateBas64DecodedDataSize(inInputDataSize);
 if (*ioOutputDataSize < theDecodedDataSize)
 	return(false);
 *ioOutputDataSize = 0;
-const UInt8 *theInPtr = (const UInt8 *)inInputData;
-UInt8 *theOutPtr = (UInt8 *)ioOutputData;
+const uint8_t *theInPtr = (const uint8_t *)inInputData;
+uint8_t *theOutPtr = (uint8_t *)ioOutputData;
 size_t theInIndex = 0, theOutIndex = 0;
-UInt8 theOutputOctet;
+uint8_t theOutputOctet;
 size_t theSequence = 0;
 for (; theInIndex < inInputDataSize; )
 	{
-	SInt8 theSextet = 0;
+	int8_t theSextet = 0;
 	
-	SInt8 theCurrentInputOctet = theInPtr[theInIndex];
+	int8_t theCurrentInputOctet = theInPtr[theInIndex];
 	theSextet = kBase64DecodeTable[theCurrentInputOctet];
 	if (theSextet == -1)
 		break;

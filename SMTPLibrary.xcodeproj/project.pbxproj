@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE1A2B5A182CDEDC00C326A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1A2B59182CDEDC00C326A7 /* Foundation.framework */; };
+		CEDC8B08182CE6BF00FE2518 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8AFE182CE6BF00FE2518 /* Base64Transcoder.c */; };
+		CEDC8B09182CE6BF00FE2518 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8B00182CE6BF00FE2518 /* HSK_CFUtilities.m */; };
+		CEDC8B0A182CE6BF00FE2518 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8B02182CE6BF00FE2518 /* NSData+Base64Additions.m */; };
+		CEDC8B0B182CE6BF00FE2518 /* NSStream+SKPSMTPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8B04182CE6BF00FE2518 /* NSStream+SKPSMTPExtensions.m */; };
+		CEDC8B0C182CE6BF00FE2518 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8B06182CE6BF00FE2518 /* SKPSMTPMessage.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE1A2B54182CDEDC00C326A7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CE1A2B56182CDEDC00C326A7 /* libSMTPLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMTPLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1A2B59182CDEDC00C326A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEDC8AFB182CE6BF00FE2518 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		CEDC8AFD182CE6BF00FE2518 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		CEDC8AFE182CE6BF00FE2518 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		CEDC8AFF182CE6BF00FE2518 /* HSK_CFUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSK_CFUtilities.h; sourceTree = "<group>"; };
+		CEDC8B00182CE6BF00FE2518 /* HSK_CFUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSK_CFUtilities.m; sourceTree = "<group>"; };
+		CEDC8B01182CE6BF00FE2518 /* NSData+Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Additions.h"; sourceTree = "<group>"; };
+		CEDC8B02182CE6BF00FE2518 /* NSData+Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Additions.m"; sourceTree = "<group>"; };
+		CEDC8B03182CE6BF00FE2518 /* NSStream+SKPSMTPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSStream+SKPSMTPExtensions.h"; sourceTree = "<group>"; };
+		CEDC8B04182CE6BF00FE2518 /* NSStream+SKPSMTPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStream+SKPSMTPExtensions.m"; sourceTree = "<group>"; };
+		CEDC8B05182CE6BF00FE2518 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPSMTPMessage.h; sourceTree = "<group>"; };
+		CEDC8B06182CE6BF00FE2518 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPSMTPMessage.m; sourceTree = "<group>"; };
+		CEDC8B07182CE6BF00FE2518 /* SMTPLibrary-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMTPLibrary-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE1A2B53182CDEDC00C326A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1A2B5A182CDEDC00C326A7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE1A2B4D182CDEDB00C326A7 = {
+			isa = PBXGroup;
+			children = (
+				CEDC8AFB182CE6BF00FE2518 /* README.markdown */,
+				CEDC8AFC182CE6BF00FE2518 /* SMTPLibrary */,
+				CEDC8B07182CE6BF00FE2518 /* SMTPLibrary-Prefix.pch */,
+				CE1A2B58182CDEDC00C326A7 /* Frameworks */,
+				CE1A2B57182CDEDC00C326A7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE1A2B57182CDEDC00C326A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE1A2B56182CDEDC00C326A7 /* libSMTPLibrary.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE1A2B58182CDEDC00C326A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE1A2B59182CDEDC00C326A7 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEDC8AFC182CE6BF00FE2518 /* SMTPLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				CEDC8AFD182CE6BF00FE2518 /* Base64Transcoder.h */,
+				CEDC8AFE182CE6BF00FE2518 /* Base64Transcoder.c */,
+				CEDC8AFF182CE6BF00FE2518 /* HSK_CFUtilities.h */,
+				CEDC8B00182CE6BF00FE2518 /* HSK_CFUtilities.m */,
+				CEDC8B01182CE6BF00FE2518 /* NSData+Base64Additions.h */,
+				CEDC8B02182CE6BF00FE2518 /* NSData+Base64Additions.m */,
+				CEDC8B03182CE6BF00FE2518 /* NSStream+SKPSMTPExtensions.h */,
+				CEDC8B04182CE6BF00FE2518 /* NSStream+SKPSMTPExtensions.m */,
+				CEDC8B05182CE6BF00FE2518 /* SKPSMTPMessage.h */,
+				CEDC8B06182CE6BF00FE2518 /* SKPSMTPMessage.m */,
+			);
+			path = SMTPLibrary;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE1A2B55182CDEDC00C326A7 /* SMTPLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE1A2B79182CDEDD00C326A7 /* Build configuration list for PBXNativeTarget "SMTPLibrary" */;
+			buildPhases = (
+				CE1A2B52182CDEDC00C326A7 /* Sources */,
+				CE1A2B53182CDEDC00C326A7 /* Frameworks */,
+				CE1A2B54182CDEDC00C326A7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SMTPLibrary;
+			productName = SMTPLibrary;
+			productReference = CE1A2B56182CDEDC00C326A7 /* libSMTPLibrary.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE1A2B4E182CDEDB00C326A7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = werediver;
+			};
+			buildConfigurationList = CE1A2B51182CDEDB00C326A7 /* Build configuration list for PBXProject "SMTPLibrary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE1A2B4D182CDEDB00C326A7;
+			productRefGroup = CE1A2B57182CDEDC00C326A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE1A2B55182CDEDC00C326A7 /* SMTPLibrary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE1A2B52182CDEDC00C326A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEDC8B0A182CE6BF00FE2518 /* NSData+Base64Additions.m in Sources */,
+				CEDC8B0B182CE6BF00FE2518 /* NSStream+SKPSMTPExtensions.m in Sources */,
+				CEDC8B09182CE6BF00FE2518 /* HSK_CFUtilities.m in Sources */,
+				CEDC8B0C182CE6BF00FE2518 /* SKPSMTPMessage.m in Sources */,
+				CEDC8B08182CE6BF00FE2518 /* Base64Transcoder.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CE1A2B77182CDEDD00C326A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE1A2B78182CDEDD00C326A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE1A2B7A182CDEDD00C326A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SMTPLibrary.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SMTPLibrary-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CE1A2B7B182CDEDD00C326A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SMTPLibrary.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SMTPLibrary-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE1A2B51182CDEDB00C326A7 /* Build configuration list for PBXProject "SMTPLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE1A2B77182CDEDD00C326A7 /* Debug */,
+				CE1A2B78182CDEDD00C326A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE1A2B79182CDEDD00C326A7 /* Build configuration list for PBXNativeTarget "SMTPLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE1A2B7A182CDEDD00C326A7 /* Debug */,
+				CE1A2B7B182CDEDD00C326A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE1A2B4E182CDEDB00C326A7 /* Project object */;
+}
