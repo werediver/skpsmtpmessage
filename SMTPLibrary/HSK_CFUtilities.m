@@ -48,13 +48,12 @@ void CFStreamCreatePairWithUNIXSocketPair(CFAllocatorRef alloc, CFReadStreamRef 
 CFIndex CFWriteStreamWriteFully(CFWriteStreamRef outputStream, const uint8_t* buffer, CFIndex length)
 {
     CFIndex bufferOffset = 0;
-    CFIndex bytesWritten;
-        
+
     while (bufferOffset < length)
     {
         if (CFWriteStreamCanAcceptBytes(outputStream))
         {
-            bytesWritten = CFWriteStreamWrite(outputStream, &(buffer[bufferOffset]), length - bufferOffset);
+            CFIndex bytesWritten = CFWriteStreamWrite(outputStream, &(buffer[bufferOffset]), length - bufferOffset);
             if (bytesWritten < 0)
             {
                 // Bail!                
