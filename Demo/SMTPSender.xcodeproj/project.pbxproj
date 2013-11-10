@@ -230,7 +230,6 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = SMTPSender;
-				USER_HEADER_SEARCH_PATHS = "../**";
 			};
 			name = Debug;
 		};
@@ -248,7 +247,6 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = SMTPSender;
-				USER_HEADER_SEARCH_PATHS = "../**";
 			};
 			name = Release;
 		};
@@ -263,7 +261,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "../**";
 			};
 			name = Debug;
 		};
@@ -278,7 +276,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "../**";
 			};
 			name = Release;
 		};

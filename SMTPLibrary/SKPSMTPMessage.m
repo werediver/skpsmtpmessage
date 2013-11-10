@@ -41,19 +41,28 @@ NSString *const kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTr
 #define SHORT_LIVENESS_TIMEOUT 20.0
 #define LONG_LIVENESS_TIMEOUT 60.0
 
-@interface SKPSMTPMessage ()
+@interface SKPSMTPMessage () <NSStreamDelegate, SKPSMTPMessageDelegate> {
+    NSOutputStream *outputStream;
+    NSInputStream *inputStream;
+    
+    SKPSMTPState sendState;
+    BOOL isSecure;
+
+    // Auth support flags
+    BOOL serverAuthCRAMMD5;
+    BOOL serverAuthPLAIN;
+    BOOL serverAuthLOGIN;
+    BOOL serverAuthDIGESTMD5;
+    
+    // Content support flags
+    BOOL server8bitMessages;
+
+	SKPSMTPMessageCompletionHandler _handler;
+}
 
 @property(nonatomic, retain) NSMutableString *inputString;
 @property(retain) NSTimer *connectTimer;
 @property(retain) NSTimer *watchdogTimer;
-
-- (void)parseBuffer;
-- (BOOL)sendParts;
-- (void)cleanUpStreams;
-- (void)startShortWatchdog;
-- (void)stopWatchdog;
-- (NSString *)formatAnAddress:(NSString *)address;
-- (NSString *)formatAddresses:(NSString *)addresses;
 
 @end
 
@@ -255,8 +264,7 @@ NSString *const kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTr
     self.relayPorts = ([_relayPorts count] > 1) ? [_relayPorts subarrayWithRange:NSMakeRange(1, [_relayPorts count] - 1)] : [NSArray array];
     
     NSLog(@"C: Attempting to connect to server at: %@:%d", _relayHost, relayPort);
-    
-    
+
     self.connectTimer = [NSTimer timerWithTimeInterval:_connectTimeout target:self selector:@selector(connectionConnectedCheck:) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:self.connectTimer forMode:NSDefaultRunLoopMode];
 
@@ -888,6 +896,28 @@ NSString *const kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTr
                             forMode:NSDefaultRunLoopMode];
     [outputStream release];
     outputStream = nil;
+}
+
+#pragma mark - Block completion handler support
+
+- (BOOL)sendWithCompletionHandler:(SKPSMTPMessageCompletionHandler)handler {
+	_handler = [handler retain];
+	_delegate = self;
+	return [self send];
+}
+
+-(void)messageSent:(SKPSMTPMessage *)message {
+	if (_handler) {
+		_handler(self, nil);
+		[_handler release];
+	}
+}
+
+-(void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error {
+	if (_handler) {
+		_handler(self, error);
+		[_handler release];
+	}
 }
 
 @end

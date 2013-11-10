@@ -65,6 +65,8 @@ extern NSString *const kSKPSMTPPartContentTransferEncodingKey;
 
 @class SKPSMTPMessage;
 
+typedef void (^SKPSMTPMessageCompletionHandler)(SKPSMTPMessage *message, NSError *error);
+
 @protocol SKPSMTPMessageDelegate
 @required
 
@@ -73,23 +75,7 @@ extern NSString *const kSKPSMTPPartContentTransferEncodingKey;
 
 @end
 
-@interface SKPSMTPMessage : NSObject <NSCopying, NSStreamDelegate>
-{
-    NSOutputStream *outputStream;
-    NSInputStream *inputStream;
-    
-    SKPSMTPState sendState;
-    BOOL isSecure;
-
-    // Auth support flags
-    BOOL serverAuthCRAMMD5;
-    BOOL serverAuthPLAIN;
-    BOOL serverAuthLOGIN;
-    BOOL serverAuthDIGESTMD5;
-    
-    // Content support flags
-    BOOL server8bitMessages;
-}
+@interface SKPSMTPMessage : NSObject <NSCopying>
 
 @property(nonatomic, retain) NSString *login;
 @property(nonatomic, retain) NSString *pass;
@@ -111,5 +97,6 @@ extern NSString *const kSKPSMTPPartContentTransferEncodingKey;
 @property(nonatomic, assign) id <SKPSMTPMessageDelegate> delegate;
 
 - (BOOL)send;
+- (BOOL)sendWithCompletionHandler:(SKPSMTPMessageCompletionHandler)handler;
 
 @end
