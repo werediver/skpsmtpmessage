@@ -38,10 +38,12 @@
 @interface SMTPSenderAppDelegate : NSObject <UIApplicationDelegate, SKPSMTPMessageDelegate> {
     UIWindow *window;
 }
-@property (nonatomic, retain) IBOutlet UITextView *textView;
+
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UITextView *textView;
 
 - (IBAction)sendMessage:(id)sender;
+
 - (void)updateTextView;
 
 @end

@@ -34,9 +34,6 @@
 
 @implementation SMTPSenderAppDelegate
 
-@synthesize window;
-@synthesize textView;
-
 + (void)initialize {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *defaultsDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me@example.com", @"fromEmail",
@@ -49,18 +46,20 @@
     
     [userDefaults registerDefaults:defaultsDictionary];
 }
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
     // Override point for customization after app launch    
-    [window makeKeyAndVisible];
+    [_window makeKeyAndVisible];
 }
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self updateTextView];
 }
 
 - (void)dealloc {
-    [window release];
+    [_window release];
     [super dealloc];
 }
 
@@ -128,6 +127,7 @@
         [testMsg send];
     });
 }
+
 - (void)messageSent:(SKPSMTPMessage *)message
 {
     [message release];
@@ -137,12 +137,17 @@
 
 - (void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error
 {
-    
-    //self.textView.text = [NSString stringWithFormat:@"Darn! Error: %@, %@", [error code], [error localizedDescription]];
-    self.textView.text = [NSString stringWithFormat:@"Darn! Error!\n%i: %@\n%@", [error code], [error localizedDescription], [error localizedRecoverySuggestion]];
-    [message release];
-    
-    //NSLog(@"delegate - error(%d): %@", [error code], [error localizedDescription]);
+	if ([NSThread isMainThread]) {
+		//self.textView.text = [NSString stringWithFormat:@"Darn! Error: %@, %@", [error code], [error localizedDescription]];
+		self.textView.text = [NSString stringWithFormat:@"Darn! Error!\n%i: %@\n%@", [error code], [error localizedDescription], [error localizedRecoverySuggestion]];
+		[message release];
+		
+		//NSLog(@"delegate - error(%d): %@", [error code], [error localizedDescription]);
+	} else {
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			[self messageFailed:message error:error];
+		});
+	}
 }
 
 @end
