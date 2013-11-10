@@ -29,27 +29,25 @@
 //
 
 #import "SMTPSenderAppDelegate.h"
-#import "SKPSMTPMessage.h"
 #import "NSData+Base64Additions.h"
 
 @implementation SMTPSenderAppDelegate
 
 + (void)initialize {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *defaultsDictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me@example.com", @"fromEmail",
-                                               @"you@example.com", @"toEmail",
-                                               @"smtp.example.com", @"relayHost",
-                                               @"me@example.com", @"login",
-                                               @"SekritSquirrel", @"pass",
-                                               [NSNumber numberWithBool:YES], @"requiresAuth",
-                                               [NSNumber numberWithBool:YES], @"wantsSecure", nil];
-    
-    [userDefaults registerDefaults:defaultsDictionary];
+    NSDictionary *settings = @{
+		@"fromEmail": @"me@example.com",
+		@"toEmail": @"you@example.com",
+		@"relayHost": @"smtp.example.com",
+		@"login": @"me@example.com",
+		@"pass": @"SekritSquirrel",
+		@"requiresAuth": @YES,
+		@"wantsSecure": @YES
+	};
+	[[NSUserDefaults standardUserDefaults] registerDefaults:settings];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-    // Override point for customization after app launch    
+    // Override point for customization after app launch
     [_window makeKeyAndVisible];
 }
 
@@ -80,11 +78,9 @@
     [logText appendFormat:@"Secure: %@\n", [[defaults objectForKey:@"wantsSecure"] boolValue] ? @"Yes" : @"No"];
     self.textView.text = logText;
     [logText release];
-
 }
 
 - (IBAction)sendMessage:(id)sender {
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     SKPSMTPMessage *testMsg = [[SKPSMTPMessage alloc] init];
@@ -98,31 +94,36 @@
     
     if (testMsg.requiresAuth) {
         testMsg.login = [defaults objectForKey:@"login"];
-        
         testMsg.pass = [defaults objectForKey:@"pass"];
-
     }
     
     testMsg.wantsSecure = [[defaults objectForKey:@"wantsSecure"] boolValue]; // smtp.gmail.com doesn't work without TLS!
 
-    
     testMsg.subject = @"SMTPMessage Test Message";
     //testMsg.bccEmail = @"testbcc@test.com";
     
     // Only do this for self-signed certs!
-    // testMsg.validateSSLChain = NO;
+    //testMsg.validateSSLChain = NO;
     testMsg.delegate = self;
     
-    NSDictionary *plainPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/plain",kSKPSMTPPartContentTypeKey,
-                               @"This is a tést messåge.",kSKPSMTPPartMessageKey,@"8bit",kSKPSMTPPartContentTransferEncodingKey,nil];
+    NSDictionary *plainPart = @{
+		kSKPSMTPPartContentTypeKey: @"text/plain",
+		kSKPSMTPPartContentTransferEncodingKey: @"8bit",
+		kSKPSMTPPartMessageKey: @"This is a tést messåge."
+	};
     
     NSString *vcfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"vcf"];
     NSData *vcfData = [NSData dataWithContentsOfFile:vcfPath];
     
-    NSDictionary *vcfPart = [NSDictionary dictionaryWithObjectsAndKeys:@"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"test.vcf\"",kSKPSMTPPartContentTypeKey,
-                             @"attachment;\r\n\tfilename=\"test.vcf\"",kSKPSMTPPartContentDispositionKey,[vcfData encodeBase64ForData],kSKPSMTPPartMessageKey,@"base64",kSKPSMTPPartContentTransferEncodingKey,nil];
+    NSDictionary *vcfPart = @{
+		kSKPSMTPPartContentDispositionKey: @"attachment;\r\n\tfilename=\"test.vcf\"",
+		kSKPSMTPPartContentTypeKey: @"text/directory;\r\n\tx-unix-mode=0644;\r\n\tname=\"test.vcf\"",
+		kSKPSMTPPartContentTransferEncodingKey: @"base64",
+		kSKPSMTPPartMessageKey: [vcfData encodeBase64ForData],
+	};
     
-    testMsg.parts = [NSArray arrayWithObjects:plainPart,vcfPart,nil];
+    testMsg.parts = @[plainPart, vcfPart];
+
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [testMsg send];
     });

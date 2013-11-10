@@ -33,11 +33,7 @@
 
 #import "SKPSMTPMessage.h"
 
-@class SMTPSenderViewController;
-
-@interface SMTPSenderAppDelegate : NSObject <UIApplicationDelegate, SKPSMTPMessageDelegate> {
-    UIWindow *window;
-}
+@interface SMTPSenderAppDelegate : NSObject <UIApplicationDelegate, SKPSMTPMessageDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITextView *textView;

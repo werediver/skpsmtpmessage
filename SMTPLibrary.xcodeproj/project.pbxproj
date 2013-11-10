@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE1A2B5A182CDEDC00C326A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1A2B59182CDEDC00C326A7 /* Foundation.framework */; };
+		CE45DF51182FE8BC004F7B3B /* SKPSMTPMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = CEDC8B05182CE6BF00FE2518 /* SKPSMTPMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE45DF52182FE9E4004F7B3B /* NSData+Base64Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = CEDC8B01182CE6BF00FE2518 /* NSData+Base64Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CEDC8B08182CE6BF00FE2518 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8AFE182CE6BF00FE2518 /* Base64Transcoder.c */; };
 		CEDC8B09182CE6BF00FE2518 /* HSK_CFUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8B00182CE6BF00FE2518 /* HSK_CFUtilities.m */; };
 		CEDC8B0A182CE6BF00FE2518 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDC8B02182CE6BF00FE2518 /* NSData+Base64Additions.m */; };
@@ -102,6 +104,18 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		CE45DF50182FE8B8004F7B3B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE45DF52182FE9E4004F7B3B /* NSData+Base64Additions.h in Headers */,
+				CE45DF51182FE8BC004F7B3B /* SKPSMTPMessage.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		CE1A2B55182CDEDC00C326A7 /* SMTPLibrary */ = {
 			isa = PBXNativeTarget;
@@ -110,6 +124,7 @@
 				CE1A2B52182CDEDC00C326A7 /* Sources */,
 				CE1A2B53182CDEDC00C326A7 /* Frameworks */,
 				CE1A2B54182CDEDC00C326A7 /* CopyFiles */,
+				CE45DF50182FE8B8004F7B3B /* Headers */,
 			);
 			buildRules = (
 			);

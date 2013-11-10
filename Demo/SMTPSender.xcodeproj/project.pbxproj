@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		AA2B6F21132F11520098E285 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AA2B6F20132F11520098E285 /* Settings.bundle */; };
+		CE45DF4F182FE890004F7B3B /* libSMTPLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDC8B12182CE97D00FE2518 /* libSMTPLibrary.a */; };
 		F1A6ABD80EB6E95300BA50E8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A6ABD70EB6E95300BA50E8 /* CFNetwork.framework */; };
 		F1A6ACC90EB7B2B300BA50E8 /* test.vcf in Resources */ = {isa = PBXBuildFile; fileRef = F1A6ACC80EB7B2B300BA50E8 /* test.vcf */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE45DF4F182FE890004F7B3B /* libSMTPLibrary.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				F1A6ABD80EB6E95300BA50E8 /* CFNetwork.framework in Frameworks */,
@@ -228,6 +230,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = SMTPSender;
+				USER_HEADER_SEARCH_PATHS = "../**";
 			};
 			name = Debug;
 		};
@@ -245,6 +248,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = SMTPSender;
+				USER_HEADER_SEARCH_PATHS = "../**";
 			};
 			name = Release;
 		};
@@ -259,6 +263,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -273,6 +278,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
