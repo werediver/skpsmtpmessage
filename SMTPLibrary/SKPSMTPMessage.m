@@ -397,7 +397,6 @@ NSString *const kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTr
                 {
                     if ([tmpLine hasPrefix:@"220 "])
                     {
-                        
                         sendState = kSKPSMTPWaitingEHLOReply;
                         
                         NSString *ehlo = [NSString stringWithFormat:@"EHLO %@\r\n", @"localhost"];
@@ -654,7 +653,12 @@ NSString *const kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTr
                     {
                         error =[NSError errorWithDomain:@"SKPSMTPMessageError" code:kSKPSMTPErrorInvalidUserPass userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Invalid username or password.", @"server login fail error description"), NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Go to Email Preferences in the application and re-enter your username and password.", @"server login error recovery")}];
                         encounteredError = YES;
-                    }
+                    } else {
+						// Auth failed, reason unknown.
+						// TODO: Huge work is required here!
+                        error = [NSError errorWithDomain:@"SKPSMTPMessageError" code:-100 userInfo:nil];
+                        encounteredError = YES;
+					}
                     break;
                 }
                 
@@ -901,7 +905,7 @@ NSString *const kSKPSMTPPartContentTransferEncodingKey = @"kSKPSMTPPartContentTr
 #pragma mark - Block completion handler support
 
 - (BOOL)sendWithCompletionHandler:(SKPSMTPMessageCompletionHandler)handler {
-	_handler = [handler retain];
+	_handler = [handler copy];
 	_delegate = self;
 	return [self send];
 }

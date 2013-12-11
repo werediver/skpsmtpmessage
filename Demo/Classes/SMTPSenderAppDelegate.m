@@ -84,14 +84,14 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     SKPSMTPMessage *testMsg = [[SKPSMTPMessage alloc] init];
+
     testMsg.fromEmail = [defaults objectForKey:@"fromEmail"];
-    
     testMsg.toEmail = [defaults objectForKey:@"toEmail"];
     testMsg.bccEmail = [defaults objectForKey:@"bccEmal"];
+
     testMsg.relayHost = [defaults objectForKey:@"relayHost"];
-    
     testMsg.requiresAuth = [[defaults objectForKey:@"requiresAuth"] boolValue];
-    
+
     if (testMsg.requiresAuth) {
         testMsg.login = [defaults objectForKey:@"login"];
         testMsg.pass = [defaults objectForKey:@"pass"];
@@ -100,10 +100,10 @@
     testMsg.wantsSecure = [[defaults objectForKey:@"wantsSecure"] boolValue]; // smtp.gmail.com doesn't work without TLS!
 
     testMsg.subject = @"SMTPMessage Test Message";
-    //testMsg.bccEmail = @"testbcc@test.com";
-    
+
     // Only do this for self-signed certs!
     //testMsg.validateSSLChain = NO;
+
     testMsg.delegate = self;
     
     NSDictionary *plainPart = @{
